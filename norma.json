@@ -3,7 +3,8 @@
   "tasks": {
     "bower": {
       "out/packages": {
-        "junction": "NewSpring/junction"
+        "junction": "NewSpring/junction",
+        "blog": "Differential/meteor-blog"
       },
       "/out": {
         "settings": "https://github.com/NewSpring/settings.git"
@@ -49,8 +50,12 @@
         "meteor-platform",
         "newspring:junction",
         "ryw:blog",
+        "accounts-base",
+        "accounts-password",
+        "useraccounts:core",
         "useraccounts:materialize",
-        "iron:router"
+        "iron:router",
+        "mrt:bootstrap-3"
       ],
       "platforms": [
         "server",
