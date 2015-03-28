@@ -2,12 +2,8 @@
   "name": "laurencraig.com",
   "tasks": {
     "bower": {
-      "out/packages": {
-        "junction": "NewSpring/junction",
-        "blog": "Differential/meteor-blog"
-      },
-      "/out": {
-        "settings": "https://github.com/NewSpring/settings.git"
+      "laurencraig/packages": {
+        "junction": "NewSpring/junction"
       },
       "vendor": {
         "mixins": "normajs/holtzmann-mixins",
@@ -15,33 +11,32 @@
       }
     },
     "sass": {
-      "src": "raw/client/stylesheets/**/*",
-      "dest": "out/client/stylesheets",
+      "src": "_source/client/stylesheets/**/*",
+      "dest": "laurencraig/client/stylesheets",
       "lint": true,
       "comb": true
     },
     "javascript": {
-      "src": "raw/**/*",
-      "dest": "out"
+      "src": "_source/**/*",
+      "dest": "laurencraig"
     },
     "markup": {
-      "src": "raw/client/templates/**/*",
-      "dest": "out/client/templates",
+      "src": "_source/client/templates/**/*",
+      "dest": "laurencraig/client/templates",
       "minify": false
     },
     "copy": {
-      "src": "raw/public/**/*",
-      "dest": "out/public"
+      "src": "_source/public/**/*",
+      "dest": "laurencraig/public"
     },
     "private": {
       "@extend": "copy",
-      "src": "raw/private/**/*",
-      "dest": "out/private"
+      "src": "_source/private/**/*",
+      "dest": "laurencraig/private"
     },
     "meteor": {
       "dev": true,
-      "src": "out",
-      "settings": "out/settings/settings.json",
+      "src": "laurencraig",
       "build": {
         "dest": "build",
         "server": "localhost:3000"
@@ -50,10 +45,9 @@
         "meteor-platform",
         "newspring:junction",
         "ryw:blog",
-        "accounts-base",
         "accounts-password",
         "useraccounts:core",
-        "useraccounts:materialize",
+        "useraccounts:unstyled",
         "iron:router",
         "mrt:bootstrap-3"
       ],
@@ -67,7 +61,7 @@
   "test": {
     "before": "meteor run",
     "mocha-casperjs": {
-      "src": "out/tests/**/*"
+      "src": "laurencraig/tests/**/*"
     },
     "after": "meteor close"
   },
