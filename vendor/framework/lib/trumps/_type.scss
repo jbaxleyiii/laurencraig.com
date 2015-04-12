@@ -1,0 +1,35 @@
+
+$use-typography: true !default;
+
+@if $use-typography == true {
+  //
+  // @name .capitalize
+  // @class .capitalize
+  // @description force item to be in caps
+  //
+  // @trump true
+  //
+  .capitalize {
+    text-transform: capitalize !important;
+  }
+  //
+  // @name .lowercase
+  // @class .lowercase
+  // @description force item to be lowercase
+  //
+  // @trump true
+  //
+  .lowercase {
+    text-transform: lowercase !important;
+  }
+  //
+  // @name .uppercase
+  // @class .uppercase
+  // @description force item to be uppercase
+  //
+  // @trump true
+  //
+  .uppercase {
+    text-transform: uppercase !important;
+  }
+}

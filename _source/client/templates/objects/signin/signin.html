@@ -1,0 +1,42 @@
+<template name="signin">
+  {{#unless currentUser}}
+    <form id="{{#if hasAccount}}signin{{else}}signup{{/if}}">
+      <fieldset>
+        <legend class="push-half-bottom">
+            Sign In
+        </legend>
+        <h5 class="push-double-bottom">or create an Account</h5>
+
+        <div class="input {{#if email.status}}input--alert{{/if}}">
+          <label for="email">Email</label>
+          <input name="email" data-value="" placeholder="name@address.com"/>
+          {{#if email.status}}
+            <span class="input__status">
+              {{email.status}}
+            </span>
+          {{/if}}
+        </div>
+
+        <div class="input {{#if password.status}}input--alert{{/if}}">
+          <label for="password">Password</label>
+          <input name="password" data-value="" type="password" placeholder="Password"/>
+          {{#if password.status}}
+            <span class="input__status">
+              {{password.status}}
+            </span>
+          {{/if}}
+        </div>
+
+
+      </fieldset>
+      {{#unless hasErrors}}
+      <button class="icon--filled fa fa-sign-in" type="submit"></button>
+      {{else}}
+      <button class="icon--alert fa fa-minus" type="submit"></button>
+      {{/unless}}
+    </form>
+  {{else}}
+    <img src="http://i.ytimg.com/vi/LM3WiTLJKhg/maxresdefault.jpg" />
+  {{/unless}}
+
+</template>

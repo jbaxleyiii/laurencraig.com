@@ -1,0 +1,89 @@
+
+[data-bind-input] {
+  &:focus {
+    border: 0;
+    outline: 0;
+  }
+}
+
+.hero {
+  position: absolute;
+  z-index: 1;
+  right: $half-spacing-unit;
+  bottom: $half-spacing-unit;
+}
+
+
+.btn--alert {
+  color: white;
+  border-color: map-get($colors, alert);
+  background-color: map-get($colors, alert);
+}
+
+
+.icon--white {
+  padding: 0;
+
+  border-bottom: 0;
+}
+
+//Override or add extra styling for standard bootstrap alert boxes
+ul.notifications {
+  @include absolute(top $base-spacing-unit left $base-spacing-unit right $base-spacing-unit);
+  @include radius(10000px);
+
+  box-sizing: border-box;
+  width: auto !important;
+  // width: 100%;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+li.notification {
+  position: relative;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: $half-spacing-unit;
+
+  color: #fff;
+  border-radius: 0;
+  a {
+    color: white;
+  }
+  &.error {
+    background-color: map-get($colors, alert);
+  }
+  &.warning {
+    background-color: #f5a93a;
+  }
+  &.info {
+    background-color: #a6c5d0;
+  }
+  &.success {
+    background-color: $brand-color;
+  }
+  .title {
+    top: 0;
+
+    margin-bottom: 0;
+
+    font-weight: bold;
+  }
+  .message {
+    bottom: 0;
+
+    vertical-align: middle;
+    a {
+      text-decoration: underline !important;
+    }
+  }
+  .closeButton {
+    @include absolute(right $half-spacing-unit top 0);
+
+    font-size: $base-icon-size;
+    font-weight: bold;
+    line-height: $base-icon-size;
+  }
+}

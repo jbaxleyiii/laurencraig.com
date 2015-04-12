@@ -1,0 +1,98 @@
+<template name="blogAdminEdit">
+  {{#with post}}
+  <form class="panel" style="max-width: none; padding: 0;">
+    <section class="handheld-flush panel__item--left lap-and-up-five-twelfths background--fill floating lap-and-up-ratio--none ratio--square overlay--brand" style=
+    "{{#if hero}}background-image:url({{hero}});{{/if}}">
+      <div class="ratio__item floating__item overlay__item">
+        <div class="text-left push-double" >
+          {{#if slug}}
+          <h7 class=" push-bottom">
+              <small class="text-light">laurencraig.com/blog/</small><small data-bind-input="slug" class="text-primary" contenteditable="true">{{slug}}
+              </small>
+          </h7>
+          {{/if}}
+          {{#unless title}}
+          <h5 class="text-white">Enter title below</h5>
+          {{/unless}}
+          <h1 class="text-white" data-bind-input="title" contenteditable="true">
+            {{title}}
+          </h1>
+
+          <input type="text" tabindex="1" class="visuallyhidden" name="title" placeholder="Title" value="{{title}}">
+          <input type="hidden" class="visuallyhidden" name="slug" placeholder="Slug" value="{{slug}}">
+
+          {{#if authorName}}
+          <p class="text-white">
+            <small>
+              <strong>By {{authorName}}</strong>
+              {{#if publishedAt}} on {{blogFormatDate publishedAt}}{{/if}}
+            </small>
+
+          </p>
+          {{/if}}
+
+          {{!--
+            <div >
+              <label>Meta Description</label>
+              <input type="text" class="form-control" name="description" placeholder="Meta Description" value="{{description}}">
+            </div>
+
+          --}}
+
+        </div>
+      </div>
+
+      <div class="hero">
+        <input hidden class="visuallyhidden" name="hero" value="{{hero}}"/>
+        <input type="file" data-upload="hero"  class="icon--white fa fa-picture-o"/>
+      </div>
+
+    </section>
+
+    <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating scrollable">
+
+        <div class="floating__item">
+          {{> notifications}}
+
+            <div class="constrain-copy push text-left">
+              {{!--
+              <div class="edit-mode">
+                <a href="#" class="selected visual-toggle">Visual</a>
+                -
+                <a href="#" class="html-toggle">HTML</a>
+              </div>
+              --}}
+
+              <textarea hidden class="html-editor visuallyhidden"></textarea>
+              <div class="editable" tabindex="3">
+
+              </div>
+            </div>
+            <section>
+              <div class="grid soft--top">
+
+                <div class="grid__item one-half text-left">
+                  <a href="{{pathFor 'blog-admin'}}" class="icon--alert flush fa fa-times">
+                  </a>
+                </div>
+
+                <div class="grid__item one-half text-right">
+                  <button type="submit" class="icon--filled fa fa-save">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+    </section>
+
+
+
+    </form>
+  {{/with}}
+
+
+</div>
+
+
+
+</template>

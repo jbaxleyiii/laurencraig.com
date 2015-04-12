@@ -1,0 +1,91 @@
+
+$use-backgrounds: true!default;
+
+@if $use-backgrounds == true {
+  //
+  // @name background
+  // @description base selector to be extended for background images
+  //
+  // @extend true
+  //
+  %_background {
+    // position: relative; // is this needed?
+    overflow: hidden;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  //
+  // @name background
+  // @class .background
+  // @description background image support
+  //
+  // @object true
+  //
+  // @block .background - basic background images
+  // @modifier .background--fill - cover full size backgrounds
+  // @modifier .background--cover - cover full size backgrounds
+  // @modifier .background--top - set background to dock top
+  // @modifier .background--right - set background to dock right
+  // @modifier .background--bottom - set background to dock bottom
+  // @modifier .background--left - set background to dock left
+  // @modifier .background--fixed - set background to be fixed in container
+  //
+  // @extends %_background
+  //
+  .background {
+    @extend %_background;
+  }
+
+
+  .background--fill,
+  .background--cover {
+    @extend %_background;
+
+    background-size: cover;
+  }
+
+  // shift image to the right
+  .background--right {
+    @extend %_background;
+
+    background-position: center right;
+  }
+
+  // shift image to the left
+  .background--left {
+    @extend %_background;
+
+    background-position: center left;
+  }
+
+  // fixed image for fun scrolling effects
+  .background--fixed {
+    @extend %_background;
+
+    background-attachment: fixed;
+    background-position: top;
+    background-size: 100%;
+  }
+
+  
+  .background--colored {
+  @extend %_background;
+
+    background-color: map-get($colors, primary);
+  }
+
+  .background--colored-secondary {
+    @extend %_background;
+
+    background-color: map-get($colors, secondary);
+  }
+
+  .background--colored-tertiary {
+    @extend %_background;
+
+    background-color: map-get($colors, tertiary);
+  }
+
+}

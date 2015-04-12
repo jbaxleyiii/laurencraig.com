@@ -1,0 +1,65 @@
+<template name="variables">
+  {{#if Template.subscriptionsReady}}
+  <div class="grid">{{#each variables}}{{!--
+
+  --}}<div class="grid__item one-whole push-ends">
+
+      {{> variableDescription}}
+      <hr>
+
+    </div>{{!--
+
+    --}}{{/each}}</div>
+
+  {{else}}
+    Loading...
+  {{/if}}
+
+
+</template>
+
+<template name="variableDescription">
+
+  <h3>
+    {{name}}
+  </h3>
+
+  {{#if description}}
+  <p>
+    {{description}}
+  </p>
+  {{/if}}
+
+  {{#if link}}
+  <p>
+    <a href="{{link}}">{{link}}</a>
+  </p>
+  {{/if}}
+
+  {{#if file}}
+  <h4>
+    From {{file}}
+  </h4>
+  {{/if}}
+
+  <div class="grid">{{#each variable}}<div class="grid__item one-whole lap-and-up-one-half push-ends">
+
+      <h5>
+        <strong>{{name}}</strong>
+      </h5>
+
+      {{#if description}}
+      <p>
+        {{description}}
+      </p>
+      {{/if}}
+
+      <pre><code class="scss">{{markup.example}}: {{value}};</code></pre>
+
+
+    </div>{{/each}}</div>
+
+
+
+
+</template>

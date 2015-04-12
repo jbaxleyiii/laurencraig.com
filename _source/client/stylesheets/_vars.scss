@@ -1,3 +1,117 @@
-.foo {
-  color: #eee;
-}
+// font-family: "Lato", sans-serif;
+
+// ------------------------------------
+//   $FONT-SAMPLE
+// ------------------------------------
+$base-font-size: 16px;
+$base-line-height: 28px;
+
+
+$fonts: extend($fonts, (
+  lato: (
+    h1: (
+      font-size: 2em,
+      line-height: 1.05,
+      font-family: "Lato",
+      margin-bottom: $base-spacing-unit,
+      font-weight: 800
+    ),
+    h2: (
+      font-size: 1.75em,
+      line-height: 1.25,
+      font-weight: 700,
+      font-family: "Lato",
+      margin-bottom: $base-spacing-unit
+    ),
+    h3: (
+      font-weight: 700,
+      font-size: 1.5em,
+      line-height: 1.25,
+      font-family: "Lato",
+      margin-bottom: $half-spacing-unit
+    ),
+    h4: (
+      font-weight: 700,
+      font-size: 1.25em,
+      line-height: 1.2222222,
+      font-family: "Lato",
+      margin-bottom: $half-spacing-unit
+    ),
+    h5: (
+      font-weight: 500,
+      font-size: 1.125em,
+      line-height: 1.25,
+      font-family: "Lato",
+      margin-bottom: $half-spacing-unit
+    ),
+    h6: (
+      font-weight: 500,
+      font-size: 1em,
+      line-height: 1.125,
+      font-family: "Lato",
+      margin-bottom: $half-spacing-unit
+    ),
+    h7: (
+      font-weight: 500,
+      font-size: .875em,
+      line-height: 1.125,
+      font-family: "Lato",
+      margin-bottom: $half-spacing-unit
+    )
+  ),
+  merriweather: (
+    p: (
+      font-size: $base-font-size/16px * 1em ,
+      font-family: "Merriweather",
+      margin-bottom: $base-spacing-unit,
+      "media-query": (
+        "lap-and-up": (
+          font-size: 17px
+        )
+      )
+    ),
+    a: (
+      color: $brand-color,
+      text-decoration: none
+    )
+  )
+));
+
+// type sets
+$typography: extend($typography, (
+  h1: "lato",
+  h2: "lato",
+  h3: "lato",
+  h4: "lato",
+  h5: "lato",
+  h6: "lato",
+  h7: "lato",
+  p: "merriweather",
+  a: "merriweather"
+));
+
+
+$border-size: 2px;
+$is-newspring: false;
+
+$font-colors: extend($font-colors, (
+  "light": #fff,
+  "custard": #FAEEFF
+));
+
+$colors: extend($colors, (
+  "primary": #372049,
+  "secondary": #5D4970,
+  "tertiary": #F1BAF3,
+
+  "dark": #303030,
+  "medium": #858585,
+  "light": #fff,
+
+  "base": #ddd,
+  "alert": #c64f55
+));
+
+
+// 372049
+$brands: "facebook", "instagram", "twitter";

@@ -1,0 +1,100 @@
+<template name="blogAdmin">
+
+  <div class="grid">
+    <div class="grid__item one-whole lap-and-up-one-half text-left">
+      <h2>
+        Writings
+      </h2>
+    </div>
+  </div>
+
+  {{#if posts}}
+
+    {{#each posts}}
+    <article class="push-double-bottom">
+      {{> blogEntry}}
+      <hr class="push-double-top">
+    </article>
+    {{/each}}
+
+  {{else}}
+
+    <p>
+      It looks like nothing has been written. That is a shame, the world <strong>needs</strong> your thoughts.
+      </p>
+    <p>
+      Ready to get writting?
+
+    </p>
+    <div class="text-right handheld-text-center one-whole  push-top">
+      <a href="#" class="for-new-blog btn--filled btn--icon">
+        Let's Go
+        <i class="icon fa fa-check"></i>
+      </a>
+    </div>
+  {{/if}}
+
+
+</template>
+
+
+
+<template name="blogEntry">
+  <div class="grid">
+    <div class="grid__item">
+      <h5>
+        <a target="_blank" href="{{pathFor 'blogShow'}}">
+          {{title}}
+        </a>
+      </h5>
+
+      <p>{{{excerpt}}}</p>
+
+      <div class="grid">
+        <div class="grid__item one-whole lap-and-up-one-half">
+          <p class="push-half-bottom">
+            <small>
+              <strong>Authored by:</strong> {{authorName}}
+            </small>
+          </p>
+          <p>
+            <small>
+              {{#if published}}
+                <strong>Published at:</strong> {{blogFormatDate publishedAt}}
+              {{/if}}
+            </small>
+          </p>
+        </div>
+
+        <div class="grid__item one-whole lap-and-up-one-half text-right">
+
+          {{#if published}}
+            <a class="for-unpublish btn--filled btn--small" href="#">Unpublish</a>
+          {{else}}
+            <a class="for-publish btn--filled btn--small" href="#">Publish</a>
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
+    <div class="grid__item one-whole">
+      <div class="grid soft--top">
+
+        <div class="grid__item one-half text-left">
+          <a href="#" class="delete icon--alert fa fa-ban">
+          </a>
+        </div>
+
+        <div class="grid__item one-half text-right">
+
+          <a href="{{pathFor 'blogAdminEdit'}}" class="icon--filled fa fa-edit" style="display: inline-block;">
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</template>

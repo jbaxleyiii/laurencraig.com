@@ -1,0 +1,13 @@
+{
+  "name": "junction",
+  "homepage": "https://github.com/NewSpring/junction",
+  "_release": "f9353bf7f5",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f9353bf7f561cffa2df1e774481ef6a7203c002f"
+  },
+  "_source": "git://github.com/NewSpring/junction.git",
+  "_target": "*",
+  "_originalSource": "NewSpring/junction"
+}

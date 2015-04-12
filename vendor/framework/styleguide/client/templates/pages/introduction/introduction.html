@@ -1,0 +1,85 @@
+<template name="introduction">
+  <h1>
+    Introduction
+  </h1>
+  <p>
+    Green is a UI kit for all of NewSpring's digital properties. Green provides guidelines for the aesthetic, function and form of user interfaces to provide a consistent experience for our people. This is a living document and is under constant interation.
+  </p>
+  <div class="grid"><div class="grid__item one-whole lap-and-up-one-third">
+      <div class="ratio--landscape">
+        <div class="ratio__item">
+        </div>
+      </div>
+      <h3>
+        Junction Framework
+      </h3>
+      <p>
+        NewSpring uses the in-house developed <a href="https://github.com/NewSpring/junction-framework">Junction Framework</a> as the base styles and css framework for digital properteis. Junction provides Green styling for your application.
+      </p>
+
+    </div><div class="grid__item one-whole lap-and-up-one-third">
+      <div class="ratio--landscape">
+        <div class="ratio__item">
+        </div>
+      </div>
+      <h3>
+        Interaction kit
+      </h3>
+      <p>
+        Interaction kit provides a suite of components that are created to match the look & feel of Style kit and follow the Green design guidelines & patterns.
+      </p>
+    </div><div class="grid__item one-whole lap-and-up-one-third">
+      <div class="ratio--landscape">
+        <div class="ratio__item">
+        </div>
+      </div>
+      <h3>
+        Guidelines & patterns
+      </h3>
+      <p>
+        General design guidelines for Green to create a harmonious user experience regardless of the technical stack of your application.
+      </p>
+    </div></div>
+</template>
+
+
+<template name="bem">
+  <div class="lap-and-up-soft-ends">
+    <h3>
+      Writing CSS
+    </h3>
+    <p>
+    For our own components, follow the BEM (Block, Element, Modifier) method for writing & organising CSS. BEM helps keep our CSS logical and predictable. The naming convention follows this pattern:
+    </p>
+    <pre><code class="css">
+    .block {}
+    .block__element {}
+    .block__element--modifier {}
+    </code></pre>
+
+    <p>
+      <ul>
+        <li>
+          .block represents the higher level of an abstraction or component.
+        </li>
+        <li>
+          .block__element represents a descendent of .block that helps form .block as a whole.
+        </li>
+        <li>
+        .block--modifier represents a different state or version of .block.
+        </li>
+      </ul>
+      </p>
+    <small>
+      <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">
+        (Source: CSSWizardry)
+      </a>
+    </small>
+
+    <p>
+
+      For more information on BEM, <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">please see this article.</a>
+    </p>
+  </div>
+
+</template>

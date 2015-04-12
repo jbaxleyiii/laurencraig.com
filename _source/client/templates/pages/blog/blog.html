@@ -1,0 +1,62 @@
+<template name="blogIndex">
+
+  <div class="panel">
+    <section class="handheld-flush panel__item--left lap-and-up-five-twelfths background--fill floating lap-and-up-ratio--none ratio--square overlay--brand" style="background-image: url(https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xat1/v/t1.0-9/10929954_10101830606761298_6265444078507867788_n.jpg?oh=da1078d465baed714124d3293ce1c5c7&oe=55DEFCCA&__gda__=1440842760_5c239347a7849d7d627f5d0c0c45820f);">
+      <div class="ratio__item floating__item overlay__item">
+        <div class="handheld-flush push-bottom push-left" >
+          <h1 class="text-white">
+            Too much self confidence
+          </h1>
+          <div class="grid lap-and-up-one-half" style="margin: 0 auto;">
+            <div class="grid__item one-third text-center">
+              <a href="https://www.facebook.com/lauren.craig.1420" target="_blank" class="icon--facebook icon--white"></a>
+            </div>
+            <div class="grid__item one-third text-center">
+              <a href="https://twitter.com/laurnec/" target="_blank" class="icon--twitter icon--white"></a>
+            </div>
+            <div class="grid__item one-third text-center">
+              <a href="https://instagram.com/laurnec/" target="_blank" class="icon--instagram icon--white"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating scrollable">
+
+        <div class="floating__item">
+          <div class="constrain-copy soft lap-and-up-soft-double">
+            {{> blogIndexLoop}}
+          </div>
+        </div>
+
+    </section>
+
+</div>
+
+</template>
+
+<template name="blogIndexLoop">
+  {{#each posts}}
+    <article class="text-left">
+      <div class="push-bottom">
+        <h2 class="flush hard">
+          <a href="{{pathFor 'blogShow'}}">{{title}}</a>
+        </h2>
+
+        <h7>
+          <small>
+            <strong>{{blogFormatDate publishedAt}}</strong>
+          </small>
+
+        </h7>
+      </div>
+      <p class="the-content">
+        {{{excerpt}}}
+      </p>
+    </article>
+    <hr class="push-double-ends"/>
+  {{else}}
+    <h3>Comming soon!</h3>
+  {{/each}}
+</template>

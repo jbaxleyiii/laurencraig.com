@@ -28,7 +28,7 @@ node_modules
 
 .meteor/local
 
-out/*
+laurencraig/*
 
 !out/.meteor/*
 
@@ -36,9 +36,8 @@ out/*
 
 .norma
 
-vendor/*
-vendor
+./vendor/*
+
 
 settings.json
-package.json
 workbench

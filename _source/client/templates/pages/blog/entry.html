@@ -1,0 +1,80 @@
+<template name="blogShow">
+  <div class="transitions-content">
+  <article class="panel ">
+    <section class="handheld-flush panel__item--left lap-and-up-five-twelfths background--fill floating  lap-and-up-ratio--none ratio--square overlay--brand" style="{{#if hero}}background-image:url({{hero}});{{/if}}">
+      <div class="ratio__item floating__item overlay__item">
+        <div class="text-left push" >
+          <h1 class="text-white flush-bottom hard-bottom lap-and-up-push-bottom">
+            {{title}}
+
+          </h1>
+          <p class="text-white">
+            <small>
+              <strong>By {{authorName}}</strong> on {{blogFormatDate publishedAt}}
+            </small>
+
+          </p>
+
+
+
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="text-right lap-and-up-soft-bottom">
+          {{#if prevPost}}
+            {{#with prevPost}}
+
+              <a href="{{pathFor 'blogShow'}}" data-transition-in="sweepUpIn delay500" class="icon--white icon--large fa fa-angle-left push-right">
+              </a>
+            {{/with}}
+          {{/if}}
+
+          {{#if nextPost}}
+            {{#with nextPost}}
+              <a href="{{pathFor 'blogShow'}}" data-transition-in="sweepUpIn delay500" class="icon--white icon--large fa fa-angle-right push-right">
+              </a>
+            {{/with}}
+          {{/if}}
+
+        </div>
+      </div>
+      {{!--
+      {{#if isAdmin}}
+        <div class="hero ">
+          <a href="#" id="edit-post" class="icon--white fa fa-edit"></a>
+
+        </div>
+      {{/if}}
+      --}}
+    </section>
+
+    <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating scrollable">
+
+        <div class="floating__item">
+
+            <div class="constrain-copy soft lap-and-up-soft-double text-left">
+              {{{html}}}
+              <div class="one-whole text-center">
+                <a href="{{pathFor 'blogIndex'}}" class="btn--filled">
+                  Home
+                </a>
+              </div>
+              {{> disqus this}}
+            </div>
+
+    </section>
+
+
+  </article>
+</div>
+
+</template>
+
+<template name="disqus">
+  {{#if useDisqus}}
+    <div id="disqus_thread"></div>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  {{/if}}
+</template>

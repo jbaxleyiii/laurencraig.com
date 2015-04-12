@@ -1,0 +1,11 @@
+{
+  "name": "norma-dss",
+  "type": "package",
+  "main": "package.coffee",
+  "tasks": {
+    "dss": {
+      "src": "workbench/**/*",
+      "dest": "out"
+    }
+  }
+}

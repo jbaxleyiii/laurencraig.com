@@ -1,0 +1,53 @@
+
+$use-locked: true!default;
+
+@if $use-locked == true {
+  //
+  // @name Lock
+  // @class .locked
+  // @description Prevent a child container from being scrollable
+  //
+  // @complex-object true
+  //
+  // @block .locked
+  // @element .locked__item
+  //
+  // @note document - this can be used on html and body tags respectivly to arrest scrolling when using an overlay or modal
+  //
+  // @markup
+  // <div class="locked">
+  //   <div class="locked__item">
+  //   </div>
+  // </div>
+  //
+  .locked {
+    overflow: hidden;
+  }
+
+  //
+  // @name .locked__item
+  // @class .locked__item
+  // @description Prevent a child container from being scrollable
+  //
+  // @complex-object true
+  //
+  // @block .locked
+  // @element .locked__item
+  //
+  // @note document - this can be used on html and body tags respectivly to arrest scrolling when using an overlay or modal
+  //
+  // @markup
+  // <div class="locked">
+  //   <div class="locked__item">
+  //   </div>
+  // </div>
+  //
+  .locked__item {
+    overflow: hidden;
+
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}

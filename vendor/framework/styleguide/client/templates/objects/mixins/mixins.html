@@ -1,0 +1,33 @@
+<template name="mixins">
+  {{#if Template.subscriptionsReady}}
+    {{#each mixins}}
+      <div class="push-ends">
+        <h3> {{name}} </h3>
+        <p>
+          {{description}}
+        </p>
+
+        {{#each parameter}}
+          {{#if name}}
+          <div class="push-bottom">
+            <h7 class="push-bottom">{{description}}</h7>
+            <pre>{{name}}</pre>
+          </div>
+          {{/if}}
+        {{/each}}
+
+        <div class="grid">{{#if scss.example}}<div class="grid__item lap-and-up-one-half">
+          <pre class="{{#if css.example}}push-bottom{{/if}}"><code>//scss
+{{scss.example}}</code></pre>
+        </div>{{/if}}{{#if css.example}}<div class="grid__item lap-and-up-one-half">
+          <pre><code>/* css */
+{{css.example}}</code></pre>
+        </div>{{/if}}</div>
+      </div>
+      <hr>
+    {{/each}}
+
+
+  {{/if}}
+
+</template>

@@ -1,0 +1,24 @@
+
+$use-labels: true !default;
+
+@if $use-labels == true {
+
+  label {
+    @extend %hidden;
+
+    display: block;
+
+    padding-left: $half-spacing-unit * .5;
+
+    text-align: left;
+
+    color: map-get($colors, base);
+
+    // font-family: "colfax-web";
+    // font-size: .875em;
+    // font-weight: 500;
+    // line-height: 1.125;
+  }
+
+
+}

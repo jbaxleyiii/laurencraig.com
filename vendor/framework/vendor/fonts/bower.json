@@ -1,0 +1,23 @@
+{
+  "name": "newspring-fonts",
+  "version": "0.0.1",
+  "homepage": "https://github.com/NewSpring/newspring-fonts",
+  "authors": [
+    "NewSpring Web"
+  ],
+  "description": "local bower package for NewSpring fonts",
+  "keywords": [
+    "NewSpring",
+    "Church",
+    "fonts"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

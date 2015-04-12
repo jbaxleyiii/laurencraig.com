@@ -1,0 +1,77 @@
+
+input,
+label,
+select,
+textarea {
+  display: inline-block;
+
+  margin: 0;
+  padding: 0;
+
+  vertical-align: middle;
+  white-space: normal;
+
+  border: 0;
+  background: none;
+}
+
+
+input:focus {
+  outline: 0;
+}
+
+
+
+input[type=reset],
+input[type=checkbox],
+input[type=radio],
+select {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+// input[type=checkbox],
+// input[type=radio] {
+//   width: 13px;
+//   height: 13px;
+// }
+
+
+
+
+
+
+input[type=search] {
+  -webkit-box-sizing: content-box;
+
+  -webkit-appearance: textfield;
+}
+
+
+::-webkit-search-decoration {
+  display: none;
+}
+
+
+
+::-webkit-file-upload-button {
+  padding: 0;
+
+  border: 0;
+  background: none;
+}
+
+
+textarea {
+  overflow: auto;
+
+  vertical-align: top;
+}
+
+
+
+select[multiple] {
+  vertical-align: top;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "junction",
+  "version": "0.0.0",
+  "description": "client side utility library",
+  "main": "index.js",
+  "directories": {
+    "tests": "tests"
+  },
+  "scripts": {
+    "tests": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/normajs/junction.git"
+  },
+  "author": "jbaxleyiii",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/normajs/junction/issues"
+  },
+  "homepage": "https://github.com/normajs/junction",
+  "dependencies": {
+    "norma-browser-sync": "^0.2.0",
+    "norma-casperjs": "^0.1.2",
+    "norma-copy": "^0.2.2",
+    "norma-javascript": "^0.2.3"
+  },
+  "devDependencies": {}
+}

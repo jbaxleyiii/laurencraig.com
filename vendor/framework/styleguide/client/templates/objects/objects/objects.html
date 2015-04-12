@@ -1,0 +1,40 @@
+<template name="objects">
+  {{#if Template.subscriptionsReady}}
+    {{#each objects}}
+    <div class="push-ends">
+      <h3> {{name}} </h3>
+      <p>
+        {{description}}
+      </p>
+
+      {{{markup.example}}}
+      <pre class="push-ends"><code class="html">{{markup.example}}</code></pre>
+
+      {{#if children}}
+      <h4>Modifiers of {{name}}</h4>
+      {{/if}}
+      <div class="grid push-ends">{{#each children}}<div class="grid__item one-whole lap-and-up-one-half">
+          {{> _object}}
+        </div>{{/each}}</div>
+    </div>
+    <hr>
+
+    {{/each}}
+
+  {{else}}
+    Loading...
+  {{/if}}
+
+</template>
+
+<template name="_object">
+  <div class="push-ends">
+    <h5> {{name}} </h5>
+    <p>
+      {{description}}
+    </p>
+
+    {{{markup.example}}}
+    <pre class="push-ends"><code class="html">{{markup.example}}</code></pre>
+  </div>
+</template>

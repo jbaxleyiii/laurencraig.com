@@ -1,0 +1,33 @@
+
+$use-form: true !default;
+
+@if $use-form == true {
+  form {
+    position: relative;
+
+    min-width: 320px;
+    max-width: 480px;
+    padding: $base-spacing-unit;
+
+    text-align: center;
+  }
+
+  fieldset {
+    margin-bottom: $base-spacing-unit;
+
+    border: 0;
+  }
+
+  legend {
+    @extend %h3;
+
+    margin-bottom: $base-spacing-unit * 1.25;
+  }
+
+
+  button {
+    &[class*="icon"] {
+      display: inline-block;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+
+blockquote {
+  @extend %p;
+
+  position: relative;
+
+  padding: $base-spacing-unit;
+
+  font-style: italic;
+
+  &:before {
+    position: absolute;
+    top: $half-spacing-unit;
+    left: -$half-spacing-unit;
+
+    content: "\201C";
+
+    color: map-get($colors, tertiary);
+
+    font-family: serif;
+    font-size: 50px;
+    font-weight: 700;
+    font-style: normal;
+  }
+}
+
+
+
+ol {
+  list-style-type: none;
+  li {
+    @extend %p;
+
+    position: relative;
+
+    margin-bottom: $half-spacing-unit * .5;
+    padding-left: $base-spacing-unit;
+
+    counter-increment: step-counter;
+    &:before {
+      position: absolute;
+      top: 0;
+      left: -$half-spacing-unit * .5;
+
+      content: counter(step-counter);
+
+      color: map-get($colors, secondary);
+    }
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul:not(.medium-editor-toolbar-actions) {
+  li {
+    @extend %p;
+
+    position: relative;
+
+    padding-left: $base-spacing-unit;
+    &:before {
+      @include circle($half-spacing-unit);
+
+      position: absolute;
+      top: $half-spacing-unit;
+      left: -$half-spacing-unit * .5;
+
+      background-color: map-get($colors, tertiary);
+    }
+  }
+}

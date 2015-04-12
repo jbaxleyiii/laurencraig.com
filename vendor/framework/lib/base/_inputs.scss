@@ -1,0 +1,34 @@
+
+$use-input: true !default;
+
+@if $use-input == true {
+
+  input {
+    @extend %h6;
+    @include placeholder {
+      color: map-get($colors, base);
+    }
+
+    width: 100%;
+    padding: $half-spacing-unit * .5;
+
+    border-bottom: solid $base-border-size map-get($colors, base);
+
+    font-weight: bold;
+
+    &:focus {
+      @include placeholder {
+        color: #fff;
+      }
+
+      border-bottom-width: 2px;
+      border-bottom-color: $base-font-color;
+    }
+
+    &[data-value]:not([data-value=""]) {
+      border-bottom-width: 2px;
+      border-bottom-color: $base-font-color;
+    }
+  }
+
+}

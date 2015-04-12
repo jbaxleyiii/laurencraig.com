@@ -1,0 +1,164 @@
+
+$use-icons: true!default;
+
+@if $use-icons == true {
+  @include keyframe(spin) {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  //
+  // @name %_icon
+  // @description base selector for icons to extend that sets the width, height, and position to relative to contain sub items
+  //
+  // @extend true
+  //
+  %icon {
+    @extend %_circle;
+
+    position: relative;
+
+    display: block;
+
+    width: ($base-icon-size + ($base-border-size*2));
+    height: ($base-icon-size + ($base-border-size*2));
+
+    text-decoration: none;
+
+    &[class*="fa-"] {
+      margin-bottom: 0;
+
+      text-align: center;
+
+      line-height: ($base-icon-size + ($base-border-size*2));
+    }
+  }
+
+  //
+  // @name icon
+  // @class .icon
+  // @description icon class to set size from default variable
+  //
+  // @block .icon
+  // @modifier .icon--filled
+  //
+  // @extends %icon
+  //
+  // @state .icon fa-* - any fontawesome class will be set to correct size in icon
+  //
+  // @object true
+  //
+  // @markup
+  // <div class="icon fa fa-close"></div>
+  //
+  .icon {
+    @extend %icon;
+  }
+
+  //
+  // @name .icon--filled
+  // @class .icon--filled
+  // @description icon with background primary and light text
+  //
+  // @block .icon
+  // @modifier .icon--filled
+  //
+  // @extends %icon
+  //
+  // @object true
+  //
+  // @markup
+  // <div class="icon--filled fa fa-close"></div>
+  //
+  .icon--filled {
+    @extend %icon;
+
+    color: map-get($colors, light);
+    background-color: $brand-color;
+  }
+
+  //
+  // @name .icon--alert
+  // @class .icon--alert
+  // @description icon with background of alert color and light text
+  //
+  // @block .icon
+  // @modifier .icon--alert
+  //
+  // @extends %icon
+  //
+  // @object true
+  //
+  // @markup
+  // <div class="icon--alert fa fa-close"></div>
+  //
+  .icon--alert {
+    @extend %icon;
+
+    color: map-get($colors, light);
+    background-color: map-get($colors, alert);
+  }
+
+  //
+  // @name .icon--loading
+  // @class .icon--loading
+  // @description icon class with loading spinner
+  //
+  // @block .icon
+  // @modifier .icon--loading
+  //
+  // @extends %icon
+  //
+  // @state .icon fa-* - any fontawesome class will be set to correct size in icon
+  //
+  // @object true
+  //
+  // @markup
+  // <div class="icon--loading"></div>
+  //
+  .icon--loading {
+    @extend %icon;
+    @include vendor(animation, spin 1s infinite linear);
+
+    text-indent: -9999em;
+
+    border-width: $base-border-size * 2;
+    // border-style: solid;
+    background-image: linear-gradient(to right, map-get($colors, light) 10%, rgba(map-get($colors, light), 0) 50%);
+
+    // hide fonts
+
+    &:before {
+      @include absolute(top 0 left 0);
+      @include radius(100% 0 0);
+
+      z-index: 1;
+
+      width: 50%;
+      height: 50%;
+      // remove FA icons
+
+      content: "" !important;
+
+      background-color: map-get($colors, light);
+    }
+
+    &:after {
+      @include radius(50%);
+      @include absolute(top 0 bottom 0 left 0 right 0);
+
+      z-index: 2;
+
+      width: 75%;
+      height: 75%;
+      margin: auto;
+
+      content: "";
+
+      background: $brand-color;
+    }
+  }
+}

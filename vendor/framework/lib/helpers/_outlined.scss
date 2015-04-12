@@ -1,0 +1,20 @@
+
+$use-outlined: true !default;
+
+@if $use-outlined == true {
+  //
+  // @name .outlined
+  // @class .outlined
+  // @description adds border and border-radius based on defaults to any element
+  //
+  // @helper true
+  //
+  .outlined {
+    border: $base-border-size solid map-get($colors, primary);
+
+    // if $brand-round is 0 there is no reason to output radius mixin
+    @if $base-border-radius > 0 {
+      @include radius($base-border-radius);
+    }
+  }
+}

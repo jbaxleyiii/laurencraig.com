@@ -6,13 +6,12 @@
         "junction": "NewSpring/junction"
       },
       "vendor": {
-        "mixins": "normajs/holtzmann-mixins",
-        "framework": "normajs/holtzmann-framework"
+        "framework": "NewSpring/junction-framework"
       }
     },
     "sass": {
-      "src": "_source/client/stylesheets/**/*",
-      "dest": "laurencraig/client/stylesheets",
+      "src": "_source/client/**/*",
+      "dest": "laurencraig/client/",
       "lint": true,
       "comb": true
     },
@@ -23,11 +22,19 @@
     "markup": {
       "src": "_source/client/templates/**/*",
       "dest": "laurencraig/client/templates",
-      "minify": false
+      "minify": true
     },
     "copy": {
       "src": "_source/public/**/*",
       "dest": "laurencraig/public"
+    },
+    "settings": {
+      "@extend": "copy",
+      "src": "settings",
+      "dest": "laurencraig/",
+      "ext": [
+        "json"
+      ]
     },
     "private": {
       "@extend": "copy",
@@ -37,19 +44,27 @@
     "meteor": {
       "dev": true,
       "src": "laurencraig",
+      "settings": "settings.json",
       "build": {
         "dest": "build",
         "server": "localhost:3000"
       },
       "packages": [
         "meteor-platform",
-        "newspring:junction",
-        "ryw:blog",
+        "accounts-base",
         "accounts-password",
-        "useraccounts:core",
-        "useraccounts:unstyled",
+        "reactive-var",
         "iron:router",
-        "mrt:bootstrap-3"
+        "jamielob:transitions",
+        "kaptron:minimongoid",
+        "meteorhacks:fast-render",
+        "meteorhacks:subs-manager",
+        "cfs:standard-packages",
+        "cfs:filesystem",
+        "cfs:s3",
+        "gfk:notifications",
+        "mrt:moment",
+        "multiply:iron-router-progress"
       ],
       "platforms": [
         "server",

@@ -1,0 +1,27 @@
+{
+  "name": "Junction",
+  "tasks": {
+    "javascript": {
+      "src": "lib/**/*",
+      "dest": "out"
+    },
+    "casperjs": {
+      "src": "tests/unit/**/*"
+    },
+    "browser-sync": {
+      "root": "./",
+      "watch": "tests/**"
+    },
+    "copy": {
+      "src": "out/junction",
+      "dest": "./",
+      "ext": [
+        "js"
+      ]
+    }
+  },
+  "server": {
+    "host": "tests",
+    "port": "3000"
+  }
+}
