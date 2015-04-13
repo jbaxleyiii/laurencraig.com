@@ -13,6 +13,10 @@
   bottom: $half-spacing-unit;
 }
 
+.text-tertiary {
+  color: map-get($colors, tertiary);
+}
+
 
 .btn--alert {
   color: white;

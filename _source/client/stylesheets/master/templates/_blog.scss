@@ -53,7 +53,7 @@ ul {
   list-style-type: none;
 }
 
-ul:not(.medium-editor-toolbar-actions) {
+ul:not(.medium-editor-toolbar-actions):not(.medium-editor-toolbar) {
   li {
     @extend %p;
 

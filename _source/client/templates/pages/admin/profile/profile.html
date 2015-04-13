@@ -1,22 +1,19 @@
-<template name="administration">
+<template name="profile">
 
   <div class="panel">
     <section class="handheld-flush panel__item--left lap-and-up-five-twelfths background--fill floating lap-and-up-ratio--none ratio--square overlay--brand" style="background-image: url(https://igcdn-photos-b-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/11137890_905642656124201_2049372552_n.jpg);">
       <div class="ratio__item floating__item overlay__item">
         <div class="handheld-flush push-bottom push-left" >
           <h2 class="text-white">
-            Whats on your mind?
+            Welcome back!
           </h2>
-          {{#if posts}}
-          <a href="#" class="btn--light for-new-blog">New Post</a>
-          {{/if}}
         </div>
       </div>
 
       {{#if currentUser}}
       <div class="hero">
         <div class="text-right lap-and-up-soft-half">
-          <a href="{{pathFor 'profile'}}" id="profile" class="icon--white fa fa-user flush"></a>
+          <a href="{{pathFor 'administration'}}" id="profile" class="icon--white fa fa-edit flush"></a>
           <a href="#" id="logout" class="icon--white fa fa-sign-out flush"></a>
         </div>
       </div>
@@ -26,17 +23,14 @@
     <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating scrollable">
 
         <div class="floating__item">
-          {{#if currentUser}}
+
             <div class="constrain-copy push lap-and-up-push-double text-left">
-              {{> blogAdmin}}
+              Profile info
             </div>
-          {{else}}
-            {{> signin}}
-          {{/if}}
-        </div>
+          </div>
 
     </section>
 
-</div>
+  </div>
 
 </template>

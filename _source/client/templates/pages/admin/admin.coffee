@@ -1,9 +1,9 @@
-Template["blog-admin"].onCreated ->
+Template.administration.onCreated ->
 
   @.subscribe "postForAdmin"
   @.subscribe "authors"
 
-Template["blog-admin"].helpers
+Template.administration.helpers
 
   posts: ->
     # Call toArray() because minimongoid does not return a true array, and
@@ -17,9 +17,14 @@ Template["blog-admin"].helpers
 
 
 
-Template["blog-admin"].events
+Template.administration.events
 
   'click .for-new-blog': (e, tpl) ->
     e.preventDefault()
 
     Router.go 'blogAdminEdit', id: Random.id()
+
+  'click #logout': (e, tpl) ->
+    e.preventDefault()
+
+    Meteor.logout()

@@ -1,9 +1,45 @@
-# Router.route "/",
-#   name: "blog-admin"
-#   template: "blog-admin"
+
 Router.configure
   progressSpinner: false
+  layoutTemplate: "custom"
+  loadingTemplate: "loading"
+  notFoundTemplate: "blogIndex"
+  load: ->
+    if Meteor.isClient
+      $('html, body').animate({ scrollTop: 0 }, 400)
 
+
+if Meteor.isClient
+
+  Transitioner.default
+    # in: ["transition.slideLeftIn", { duration: 500 }]
+    # out: ["transition.slideLeftOut", { duration: 500 }]
+    in: (node, next) ->
+      $node = $(node)
+      $.Velocity.hook($node, "translateX", "100%");
+      $node.insertBefore(next)
+        .velocity {
+            opacity: [ 1, 0 ]
+            translateX: [ 0, -80 ]
+            translateZ: 0
+          },
+          duration: 500
+          easing: 'ease-in-out'
+          queue: false
+
+    out: (node) ->
+      $node = $(node)
+      $node.velocity {
+          opacity: [ 0, 1 ]
+          translateX: -80
+          translateZ: 0
+        },
+        reset: { translateX: 0 }
+        duration: 500
+        easing: 'ease-in-out'
+        queue: false
+        complete: ->
+          $node.remove()
 
 
 subs = new SubsManager
@@ -11,147 +47,116 @@ subs = new SubsManager
   expireIn: 5 # Any subscription will be expire after 5 minute, if it"s not subscribed again
 
 
-if Meteor.isClient
+Router.map ->
 
+  @.route "/",
+    name: "blogIndex"
+    template: "blogIndex"
+    fastRender: true
 
-  Router.onBeforeAction ->
-    @notFoundTemplate =
-      if Blog.settings.blogNotFoundTemplate
-        Blog.settings.blogNotFoundTemplate
-      else
-        "blogNotFound"
-    Iron.Router.hooks.dataNotFound.call @
-  , only: ["blogShow"]
-
-
-# BLOG INDEX
-
-Router.route "/",
-  name: "blogIndex"
-  template: "custom"
-  onRun: ->
-
-    if not Session.get("postLimit") and Blog.settings.pageSize
-      Session.set "postLimit", Blog.settings.pageSize
-
-    @next()
-
-  waitOn: ->
-    if (typeof Session isnt "undefined")
-      [
-        subs.subscribe "posts", Blog.settings.pageSize
-        subs.subscribe "authors"
-      ]
-
-  fastRender: true
-
-  data: ->
-    posts: Post.where {},
-      sort: publishedAt: -1
-
-
-# SHOW BLOG
-
-# BLOG ADMIN INDEX
-
-Router.route "/admin/",
-  name: "blog-admin"
-  template: "custom"
-
-  waitOn: ->
-    [
-      Meteor.subscribe "postForAdmin"
-      Meteor.subscribe "authors"
-    ]
-
-# NEW/EDIT BLOG
-
-Router.route "/admin/edit/:id",
-  name: "blogAdminEdit"
-  template: "custom"
-
-  onBeforeAction: ->
-    if Meteor.loggingIn()
-      return
-
-    Deps.autorun () ->
-      Router.go "blogIndex" if not Meteor.userId()
-
-    Meteor.call "isBlogAuthorized", @params.id, (err, authorized) =>
-      if not authorized
-        return @redirect("/blog")
-
-    Session.set "postId", @params.id
-
-    if Session.get("postId").length?
+    onBeforeAction: ->
+      $('html, body').animate({ scrollTop: 0 }, 400)
       @next()
 
-  action: ->
-
-    if @ready()
-      @render()
-
-  waitOn: -> [
-    Meteor.subscribe "singlePostById", @params.id
-    Meteor.subscribe "authors"
-  ]
+  @.route "/admin",
+    name: "administration"
+    template: "administration"
 
 
+  # NEW/EDIT BLOG
 
+  @.route "/admin/edit/:id",
+    name: "blogAdminEdit"
+    template: "blogAdminEdit"
 
-Router.route "/:slug",
-  name: "blogShow"
-  template: "custom"
+    onBeforeAction: ->
+      if Meteor.loggingIn()
+        return
 
-  onRun: ->
-    Session.set("slug", @params.slug)
-    @next()
+      Deps.autorun () ->
+        if not Meteor.userId()
+          Router.go "blogIndex"
 
-  onBeforeAction: ->
-
-    if !Blog.settings.publicDrafts and !Post.first().published
-      Meteor.call "isBlogAuthorized", (err, authorized) =>
+      Meteor.call "isBlogAuthorized", @params.id, (err, authorized) =>
         if not authorized
           return @redirect("/blog")
 
-    @next()
-  action: ->
-    if @ready()
+      Session.set "postId", @params.id
 
-      @render()
+      if Session.get("postId").length?
+        @next()
 
-  waitOn: ->
-    [
-      Meteor.subscribe "singlePostBySlug", @params.slug
-      subs.subscribe "authors"
-    ]
-  fastRender: true
+  @.route "/admin/profile",
+    name: "profile"
+    template: "profile"
 
-  data: ->
-    _post = Post.first slug: @params.slug
+    onBeforeAction: ->
+      if Meteor.loggingIn()
+        return
 
-    allPosts = Post.all({
-      fields:
-        slug: 1
-        id: 1
-      sort: {
-        publishedAt: -1
-      }
-    }).toArray()
+      Deps.autorun () ->
+        if not Meteor.userId()
+          Router.go "blogIndex"
 
-    postIndex = false
-    for post, index in allPosts
-      if post.id is _post.id
-        postIndex = index
-        break
+      Meteor.call "isBlogAuthorized", @params.id, (err, authorized) =>
+        if not authorized
+          return @redirect("/blog")
+
+      @next()
 
 
-    if postIndex isnt false
-      if allPosts[postIndex - 1]
-        _post.prevPost = allPosts[postIndex - 1]
 
-      if allPosts[postIndex + 1]
-        _post.nextPost = allPosts[postIndex + 1]
+  @.route "/:slug",
+    name: "blogShow"
+    template: "blogShow"
+
+    onBeforeAction: ->
+      $('html, body').animate({ scrollTop: 0 }, 400)
+      @next()
 
 
-    return _post
+    onRun: ->
+      Session.set("slug", @params.slug)
+      @next()
+
+    action: ->
+
+      if @ready()
+
+        @render()
+
+    waitOn: ->
+      [
+        Meteor.subscribe "singlePostBySlug"
+        subs.subscribe "authors"
+      ]
+    fastRender: true
+
+    data: ->
+      _post = Post.first slug: @params.slug
+
+      allPosts = Post.all({
+        fields:
+          slug: 1
+          id: 1
+        sort: {
+          publishedAt: -1
+        }
+      }).toArray()
+
+      postIndex = false
+      for post, index in allPosts
+        if post.id is _post.id
+          postIndex = index
+          break
+
+
+      if postIndex isnt false
+        if allPosts[postIndex - 1]
+          _post.prevPost = allPosts[postIndex - 1]
+
+        if allPosts[postIndex + 1]
+          _post.nextPost = allPosts[postIndex + 1]
+
+
+      return _post

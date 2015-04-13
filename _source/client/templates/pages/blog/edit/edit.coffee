@@ -92,6 +92,9 @@ save = (tpl, cb) ->
 
 Template.blogAdminEdit.onCreated ->
 
+  @.subscribe "singlePostById", Session.get "postId"
+  @.subscribe "authors"
+
   # We can't use reactive template vars for contenteditable :-(
   # (https://github.com/meteor/meteor/issues/1964). So we put the single-post
   # subscription in an autorun. If we're loading an existing post, once its
@@ -220,4 +223,4 @@ Template.blogAdminEdit.events
     save tpl, (id, err) ->
       if err
         return Notifications.error '', err.message
-      Router.go 'blog-admin'
+      Router.go 'administration'

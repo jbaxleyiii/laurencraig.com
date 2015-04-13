@@ -5,7 +5,7 @@
 
 
 Meteor.publish 'singlePostBySlug', (slug) ->
-  check slug, String
+  # check slug, String
 
   # singlePost = Post.find slug: slug
 
@@ -24,13 +24,16 @@ Meteor.publish 'posts', (limit) ->
 
   check limit, Match.OneOf(Number, null)
 
+
   if limit is null then return @ready()
 
-  Post.find { published: true },
+  posts = Post.find { published: true },
     fields: body: 0
     sort: publishedAt: -1
     limit: limit
 
+
+  return posts
 
 
 Meteor.publish 'authors', ->

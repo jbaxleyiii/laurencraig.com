@@ -1,5 +1,8 @@
 <template name="custom">
-  <div class="transitions-container" style="height:100%;">
-    {{> Template.dynamic template=template}}
-  </div>
+
+  {{#transitioner}}
+    {{> yield}}
+  {{/transitioner}}
+
+
 </template>

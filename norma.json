@@ -55,7 +55,6 @@
         "accounts-password",
         "reactive-var",
         "iron:router",
-        "jamielob:transitions",
         "kaptron:minimongoid",
         "meteorhacks:fast-render",
         "meteorhacks:subs-manager",
@@ -64,7 +63,8 @@
         "cfs:s3",
         "gfk:notifications",
         "mrt:moment",
-        "multiply:iron-router-progress"
+        "multiply:iron-router-progress",
+        "ccorcos:transitioner"
       ],
       "platforms": [
         "server",

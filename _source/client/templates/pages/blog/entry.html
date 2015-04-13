@@ -1,9 +1,10 @@
 <template name="blogShow">
-  <div class="transitions-content">
   <article class="panel ">
     <section class="handheld-flush panel__item--left lap-and-up-five-twelfths background--fill floating  lap-and-up-ratio--none ratio--square overlay--brand" style="{{#if hero}}background-image:url({{hero}});{{/if}}">
       <div class="ratio__item floating__item overlay__item">
-        <div class="text-left push" >
+        <div class="text-left push lap-and-up-push-double" >
+
+
           <h1 class="text-white flush-bottom hard-bottom lap-and-up-push-bottom">
             {{title}}
 
@@ -13,40 +14,48 @@
               <strong>By {{authorName}}</strong> on {{blogFormatDate publishedAt}}
             </small>
 
+
+
           </p>
+
 
 
 
         </div>
       </div>
-
+      {{!--
       <div class="hero">
         <div class="text-right lap-and-up-soft-bottom">
           {{#if prevPost}}
             {{#with prevPost}}
 
-              <a href="{{pathFor 'blogShow'}}" data-transition-in="sweepUpIn delay500" class="icon--white icon--large fa fa-angle-left push-right">
+              <a href="{{pathFor 'blogShow'}}" class="icon--white icon--large fa fa-angle-left {{#if nextPost}}push-right{{/if}}">
               </a>
             {{/with}}
           {{/if}}
 
           {{#if nextPost}}
             {{#with nextPost}}
-              <a href="{{pathFor 'blogShow'}}" data-transition-in="sweepUpIn delay500" class="icon--white icon--large fa fa-angle-right push-right">
+              <a href="{{pathFor 'blogShow'}}" class="icon--white icon--large fa fa-angle-right">
               </a>
             {{/with}}
           {{/if}}
 
         </div>
       </div>
-      {{!--
-      {{#if isAdmin}}
-        <div class="hero ">
-          <a href="#" id="edit-post" class="icon--white fa fa-edit"></a>
-
-        </div>
-      {{/if}}
       --}}
+
+      {{#if isAdmin}}
+
+        <div class="hero">
+          <div class="text-right lap-and-up-soft-half">
+
+          <a href="#" id="edit-post" class="icon--white fa fa-edit flush"></a>
+        </div>
+      </div>
+
+      {{/if}}
+
     </section>
 
     <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating scrollable">
@@ -55,7 +64,21 @@
 
             <div class="constrain-copy soft lap-and-up-soft-double text-left">
               {{{html}}}
-              <div class="one-whole text-center">
+              <div class="grid text-center push-bottom lap-and-up-push-double-ends">
+                <div class="grid__item one-third text-center">
+                  {{> facebook}}
+                </div>
+                <div class="grid__item one-third text-center">
+                  {{> pinterest}}
+                </div>
+                <div class="grid__item one-third text-center">
+                  {{> twitter}}
+                </div>
+              </div>
+              <hr class="push-bottom">
+
+
+              <div class="one-whole text-center lap-and-up-push-double-ends">
                 <a href="{{pathFor 'blogIndex'}}" class="btn--filled">
                   Home
                 </a>
@@ -67,8 +90,20 @@
 
 
   </article>
-</div>
 
+</template>
+
+
+<template name="pinterest">
+  <a href="#" data-share class="icon--filled icon--pinterest" style="margin: 0 auto;"></a>
+</template>
+
+<template name="facebook">
+  <a href="#" data-share class="icon--filled icon--facebook" style="margin: 0 auto;"></a>
+</template>
+
+<template name="twitter">
+  <a href="#" data-share class="icon--filled icon--twitter" style="margin: 0 auto;"></a>
 </template>
 
 <template name="disqus">

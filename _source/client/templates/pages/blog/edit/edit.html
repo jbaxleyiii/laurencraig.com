@@ -6,15 +6,17 @@
       <div class="ratio__item floating__item overlay__item">
         <div class="text-left push-double" >
           {{#if slug}}
-          <h7 class=" push-bottom">
-              <small class="text-light">laurencraig.com/blog/</small><small data-bind-input="slug" class="text-primary" contenteditable="true">{{slug}}
-              </small>
-          </h7>
+          <div class="push-half-bottom">
+            <h7>
+                <small><a href="/{{slug}}"  class="text-light">laurencraig.com/</a></small><small data-bind-input="slug" class="text-tertiary" contenteditable="true">{{slug}}
+                </small>
+            </h7>
+          </div>
           {{/if}}
           {{#unless title}}
           <h5 class="text-white">Enter title below</h5>
           {{/unless}}
-          <h1 class="text-white" data-bind-input="title" contenteditable="true">
+          <h1 class="text-white push-half-bottom" data-bind-input="title" contenteditable="true">
             {{title}}
           </h1>
 
@@ -72,7 +74,7 @@
               <div class="grid soft--top">
 
                 <div class="grid__item one-half text-left">
-                  <a href="{{pathFor 'blog-admin'}}" class="icon--alert flush fa fa-times">
+                  <a href="{{pathFor 'administration'}}" class="icon--alert flush fa fa-angle-left">
                   </a>
                 </div>
 
